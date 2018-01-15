@@ -9,6 +9,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import {UserService} from './services/user.service';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {UserService} from './services/user.service';
     LoginComponent,
     CreateAccountComponent,
     ScheduleComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

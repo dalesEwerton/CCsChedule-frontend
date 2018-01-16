@@ -5,7 +5,7 @@ export class UserService {
 
 
   users: User[] = [];
-  logedIn = false;
+  loggedIn = false;
 
   constructor() {
     console.log('User Service Conected...');
@@ -32,31 +32,32 @@ export class UserService {
   login(username: string, password: string) {
 
     let index = 0;
-    while (!this.logedIn && index < this.users.length){
+    while (!this.loggedIn && index < this.users.length){
 
       if (this.users[index].username === username
         && this.users[index].password === password) {
 
-        this.logedIn = true;
+        this.loggedIn = true;
       }
 
       index++;
     }
 
-    if (this.logedIn) {
+    if (this.loggedIn) {
       alert('Login Sucsess');
+      window.location.replace('profile');
     }else {
       alert('Login Fail');
     }
 
-    console.log(this.logedIn);
+    console.log(this.loggedIn);
   }
 
   private validUsername(username: string) {
 
     let valid = true;
     for (let i = 0 ; i < this.users.length ; i++) {
-      if ( this.users[i].username == username) {
+      if ( this.users[i].username === username) {
         valid = false;
       }
     }

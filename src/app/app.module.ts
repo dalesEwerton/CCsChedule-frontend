@@ -7,9 +7,11 @@ import { LoginComponent } from './components/login/login.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { HomeComponent } from './components/home/home.component';
 import {UserService} from './services/user.service';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import {AuthguardGuard} from './guards/authguard.guard';
 
 @NgModule({
   declarations: [
@@ -17,15 +19,16 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     CreateAccountComponent,
     ScheduleComponent,
-    HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

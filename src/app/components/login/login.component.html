@@ -1,14 +1,16 @@
-<div class="container">
-  <div class="card card-container">
-    <h2 align="center">Login</h2>
-    <p id="profile-name" class="profile-name-card"></p>
-    <form class="form-signin">
-      <input type="text" [(ngModel)]="username" name="username" class="form-control" placeholder="Username" required autofocus>
-      <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Password" required>
-      <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="login()" type="submit">Sign in</button>
-    </form><!-- /form -->
-    <a href="/createaccount" class="create-account">
-      Create Account
-    </a>
-  </div><!-- /card-container -->
-</div><!-- /container -->
+<div>
+  <div class="container">
+    <div class="card card-container">
+      <h2 align="center">Login</h2>
+      <p id="profile-name" class="profile-name-card"></p>
+      <form (submit)="login($event)" class="form-signin">
+        <input type="text" class="form-control" placeholder="Username" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+      </form><!-- /form -->
+      <a (click)="createAccount()" class="create-account">
+        Create Account
+      </a>
+    </div><!-- /card-container -->
+  </div>
+</div>

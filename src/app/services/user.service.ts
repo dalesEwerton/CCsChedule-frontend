@@ -1,56 +1,67 @@
 import { Injectable } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class UserService {
 
 
-  users: User[] = [];
-  loggedIn = false;
+  private users: User[];
+  private loggedIn: boolean;
+  private user: User;
 
-  constructor() {
-    console.log('User Service Conected...');
-
-    const admUser = new User('admin', 'admin', 'admin', 0);
-
-    this.users.push(admUser);
+  constructor(private router: Router) {
+    this.users = [];
+    this.loggedIn = false;
+    this.user = null;
   }
 
-  addUser(us: string, nm: string, ps: string, sId: number) {
+  addUser(username: string, name: string, password: string, scheduleId: number, job: string, aboutMe: string) {
 
-    const newUser = new User(us, nm, ps, 0);
+    const newUser = new User(username, name, password, 0, job, aboutMe);
 
-    if (this.validUsername(us)) {
+    if (this.validUsername(username)) {
       this.users.push(newUser);
-      console.log(this.users);
-      return true;
+
+      this.router.navigate(['login']);
 
     }else {
-      return false;
+      alert('Username is already in use');
     }
   }
 
-  login(username: string, password: string) {
+  getUser(username: string) {
 
-    let index = 0;
-    while (!this.loggedIn && index < this.users.length){
+    for (let i = 0 ; i < this.users.length ; i++) {
 
-      if (this.users[index].username === username
-        && this.users[index].password === password) {
-
-        this.loggedIn = true;
+      if (this.users[i].username === username) {
+        return this.users[i];
       }
-
-      index++;
     }
 
-    if (this.loggedIn) {
-      alert('Login Sucsess');
-      window.location.replace('profile');
-    }else {
-      alert('Login Fail');
-    }
+    return null;
 
-    console.log(this.loggedIn);
+  }
+
+  setUserLoggedIn(user: User) {
+
+    this.user = user;
+    this.loggedIn = true;
+  }
+
+  getUserLoggedIn() {
+    return this.loggedIn;
+  }
+
+  getNameLogged() {
+    return this.user.name;
+  }
+
+  getJobLogged() {
+    return this.user.job;
+  }
+
+  getAboutLogged() {
+    return this.user.aboutMe;
   }
 
   private validUsername(username: string) {
@@ -73,11 +84,15 @@ class User {
   name: string;
   password: string;
   scheduleId: number;
+  job: string;
+  aboutMe: string;
 
-  constructor(us: string, nm: string, ps: string, sId: number) {
+  constructor(us: string, nm: string, ps: string, sId: number, jb: string, aMe: string) {
     this.username = us;
     this.name = nm;
     this.password = ps;
     this.scheduleId = sId;
+    this.job = jb;
+    this.aboutMe = aMe;
   }
 }

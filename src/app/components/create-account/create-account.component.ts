@@ -9,35 +9,25 @@ import { UserService } from '../../services/user.service';
 })
 export class CreateAccountComponent implements OnInit {
 
-  name: string;
-  username: string;
-  password: string;
-  cpassword: string;
-
   constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
+  createUser(e) {
+    e.preventDefault();
+    e.preventDefault();
 
-  createUser() {
+    const name = e.target.elements[0].value;
+    const username = e.target.elements[1].value;
+    const password = e.target.elements[2].value;
+    const cpassword = e.target.elements[3].value;
+    const job = e.target.elements[4].value;
+    const aboutMe = e.target.elements[5].value;
 
-    var responce = false;
-    if (this.password == this.cpassword) {
-      responce = this.userService.addUser(this.username, this.username, this.password, 0);
-    }
 
-    if(responce) {
-      this.name = '';
-      this.username = '';
-      this.password = '';
-      this.cpassword = '';
 
-      alert('Created');
-
-    }else {
-
-      this.username = '';
-      alert('User is already in use');
+    if (password === cpassword) {
+      this.userService.addUser(username, name, password, 0, job, aboutMe);
     }
   }
 

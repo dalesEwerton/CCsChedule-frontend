@@ -23,9 +23,9 @@ export class ProfileComponent implements OnInit {
   }
 
   logout() {
-    this.userService.setUserLoggedIn(null);
-
-    this.router.navigate(['']);
+    this.userService.setUserLoggedIn();
+    window.location.reload();
+    this.router.navigate(['login']);
   }
 
 }

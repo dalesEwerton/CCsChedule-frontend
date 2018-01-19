@@ -1,55 +1,95 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
+import * as $ from 'jquery';
 
 @Injectable()
 export class UserService {
 
-
-  private users: User[];
   private loggedIn: boolean;
-  private user: User;
+  private user: UserVO;
+  private api: string;
 
-  constructor(private router: Router) {
-    this.users = [];
+  constructor() {
     this.loggedIn = false;
     this.user = null;
+    this.api = 'https://ccschedule-backend.herokuapp.com/user/';
   }
 
   addUser(username: string, name: string, password: string, scheduleId: number, job: string, aboutMe: string) {
 
     const newUser = new User(username, name, password, 0, job, aboutMe);
+    let response: any;
+    let createStatus: string;
 
-    if (this.validUsername(username)) {
-      this.users.push(newUser);
-
-      this.router.navigate(['login']);
-
-    }else {
-      alert('Username is already in use');
-    }
-  }
-
-  getUser(username: string) {
-
-    for (let i = 0 ; i < this.users.length ; i++) {
-
-      if (this.users[i].username === username) {
-        return this.users[i];
+    $.ajax({
+      type: 'POST',
+      url: this.api,
+      async: false,
+      data: JSON.stringify(newUser),
+      contentType: 'application/json',
+      complete: function (data, status) {
+        response = data.responseText;
+        createStatus = status;
       }
+    });
+
+    if (createStatus === 'success') {
+
+      alert('Created!\nSign in to access our account');
+      return true;
+    }else {
+      alert(response);
+      return false;
     }
-
-    return null;
-
   }
 
-  setUserLoggedIn(user: User) {
+  authUser(username: string, password: string) {
+    const checkUser = {
+      username: username,
+      password: password
+    };
 
-    this.user = user;
-    this.loggedIn = true;
+    let response: any;
+    let logginStatus: string;
+
+    $.ajax({
+      type: 'POST',
+      url: this.api + 'login',
+      async: false,
+      data: JSON.stringify(checkUser),
+      contentType: 'application/json',
+      complete: function (data, status) {
+        response = data.responseText;
+        logginStatus = status;
+      }
+    });
+
+    if (logginStatus === 'success') {
+      this.loggedIn = true;
+
+      response = JSON.parse(response);
+      this.user = new UserVO(
+        response.name,
+        response.job,
+        response.about,
+        response.scheduleId
+      );
+
+      return true;
+    }else {
+
+      alert(response);
+      return false;
+    }
+
   }
 
   getUserLoggedIn() {
     return this.loggedIn;
+  }
+
+  setUserLoggedIn() {
+    this.loggedIn = !this.loggedIn;
   }
 
   getNameLogged() {
@@ -61,21 +101,8 @@ export class UserService {
   }
 
   getAboutLogged() {
-    return this.user.aboutMe;
+    return this.user.about;
   }
-
-  private validUsername(username: string) {
-
-    let valid = true;
-    for (let i = 0 ; i < this.users.length ; i++) {
-      if ( this.users[i].username === username) {
-        valid = false;
-      }
-    }
-
-    return valid;
-  }
-
 }
 
 class User {
@@ -85,7 +112,7 @@ class User {
   password: string;
   scheduleId: number;
   job: string;
-  aboutMe: string;
+  about: string;
 
   constructor(us: string, nm: string, ps: string, sId: number, jb: string, aMe: string) {
     this.username = us;
@@ -93,6 +120,20 @@ class User {
     this.password = ps;
     this.scheduleId = sId;
     this.job = jb;
-    this.aboutMe = aMe;
+    this.about = aMe;
+  }
+}
+
+class UserVO {
+  name: string;
+  job: string;
+  about: string;
+  scheduleID: number;
+
+  constructor(name: string, job: string, about: string, scheduleID: number) {
+    this.name = name;
+    this.job = job;
+    this.about = about;
+    this.scheduleID = scheduleID;
   }
 }

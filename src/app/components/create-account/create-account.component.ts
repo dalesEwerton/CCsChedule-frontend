@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from '../../services/user.service';
 })
 export class CreateAccountComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,11 +25,27 @@ export class CreateAccountComponent implements OnInit {
     const job = e.target.elements[4].value;
     const aboutMe = e.target.elements[5].value;
 
-
+    let created = false;
 
     if (password === cpassword) {
-      this.userService.addUser(username, name, password, 0, job, aboutMe);
+      created = this.userService.addUser(
+        username,
+        name,
+        password,
+        0,
+        job,
+        aboutMe
+      );
+    }else {
+      alert('Passwords doesn\'t match');
+      window.location.reload();
+    }
+
+    if (created) {
+
+      this.router.navigate(['login']);
+    }else {
+      window.location.reload();
     }
   }
-
 }

@@ -21,18 +21,16 @@ export class LoginComponent implements OnInit {
     const username = e.target.elements[0].value;
     const password = e.target.elements[1].value;
 
-    const user = this.userService.getUser(username);
-    if(user != null) {
+    let responce: boolean;
 
-      if (user.password === password) {
-        this.userService.setUserLoggedIn(user);
-        this.router.navigate(['profile']);
-      }else {
-        alert('Invalid Password');
-      }
+    responce = this.userService.authUser(username, password);
 
+    if(responce) {
+
+      this.router.navigate(['profile']);
     }else {
-      alert('Invalid Username');
+
+      window.location.reload();
     }
   }
 

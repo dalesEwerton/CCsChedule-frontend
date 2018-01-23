@@ -13,6 +13,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import {AuthguardGuard} from './guards/authguard.guard';
+import {ScheduleService} from './services/schedule.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {AuthguardGuard} from './guards/authguard.guard';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [UserService, AuthguardGuard],
+  providers: [UserService, AuthguardGuard, ScheduleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

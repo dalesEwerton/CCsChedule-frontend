@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as $ from 'jquery';
-import {UserService} from './user.service';
 
 @Injectable()
 export class ScheduleService {
@@ -25,11 +24,11 @@ export class ScheduleService {
       async: false,
       contentType: 'application/json',
       complete: function (data, status) {
-        console.log(data.responseText);
-        console.log(status);
-        taskiess = data.responseText;
+        taskiess = data.responseJSON;
       }
     });
+
+    return taskiess[0].shedule;
   }
 
 }

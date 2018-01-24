@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ScheduleService} from '../../services/schedule.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-schedule',
@@ -29,9 +30,14 @@ export class ScheduleComponent implements OnInit {
     'Saturday'
   ]
 
-  constructor(private scheduleService: ScheduleService) {
+  tasks: any[];
+
+  constructor(private scheduleService: ScheduleService, private userService: UserService) {
+    const scheduleId = this.userService.getUserSchedule();
+    this.tasks = this.scheduleService.mountTasks(scheduleId);
   }
 
   ngOnInit() {
+    console.log(this.tasks);
   }
 }

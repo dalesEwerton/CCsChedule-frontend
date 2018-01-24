@@ -1,4 +1,10 @@
 <div class="tg-wrap"><table class="tg" style="undefined;table-layout: fixed; width: 1069px">
+  <div>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modalCenter">
+      <span class="fa fa-plus-circle"></span> Add Task
+    </button>
+  </div>
+
   <colgroup>
     <col style="width: 127px">
     <col style="width: 189px">
@@ -17,58 +23,91 @@
   </tr>
   <tr>
     <td class="tg-yw4l">8:00h ~ 10:00h</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[1].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[2].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[3].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[4].taskName}}</td>
   </tr>
   <tr>
     <td class="tg-yw4l">10:00h ~ 12:00h</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">{{tasks[5].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[6].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[7].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[8].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[9].taskName}}</td>
   </tr>
   <tr>
     <td class="tg-yw4l">12:00h ~ 14:00h</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">{{tasks[10].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[11].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[12].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[13].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[14].taskName}}</td>
   </tr>
   <tr>
     <td class="tg-yw4l">14:00h ~ 16:00h</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">{{tasks[15].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[16].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[17].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[18].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[19].taskName}}</td>
   </tr>
   <tr>
     <td class="tg-yw4l">16:00h ~ 18:00h</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
   </tr>
   <tr>
     <td class="tg-yw4l">18:00h ~ 20:00h</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
   </tr>
   <tr>
     <td class="tg-yw4l">20:00h ~ 22:00h</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
+    <td class="tg-yw4l">{{tasks[0].taskName}}</td>
   </tr>
 </table></div>
+
+<br><br><br><br><br><br><br><br><br>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fa fa-tasks" id="modalLongTitle"> Add Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="text" placeholder="Task Name" class="form-control" ><br>
+          <textarea placeholder="Task Description" class="form-control"></textarea><br>
+          <select class="form-control">
+            <option *ngFor="let day of days">{{day}}</option>
+          </select><br>
+          <select class="form-control">
+            <option *ngFor="let hour of hours">{{hour}}</option>
+          </select><br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+

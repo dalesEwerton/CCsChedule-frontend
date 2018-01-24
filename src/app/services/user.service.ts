@@ -102,6 +102,10 @@ export class UserService {
   getAboutLogged() {
     return this.user.about;
   }
+
+  getUserSchedule() {
+    return this.user.scheduleID;
+  }
 }
 
 class User {

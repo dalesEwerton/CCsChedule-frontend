@@ -1,16 +1,44 @@
 <nav>
   <ul>
     <li>
-      <a href="#">Home</a>
+      <a id="nav1" >Home</a>
     </li>
     <li>
-      <a href="#">About</a>
+      <a id="nav2" onclick="alert('Not implemented yet!')">Services</a>
     </li>
     <li>
-      <a href="#">Services</a>
+      <a id="nav3" onclick="alert('Not implemented yet!')">Contact</a>
     </li>
     <li>
-      <a href="#">Contact</a>
+      <a id="nav4" data-toggle="modal" data-target="#modalAbout" >About</a>
     </li>
   </ul>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="modalAboutTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fa fa-tasks" id="modalLongTitle"> About</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Etiam vitae faucibus orci. Sed egestas blandit dignissim. Sed sit amet elementum leo, non imperdiet odio. Pellentesque gravida facilisis bibendum. Quisque nec metus euismod, pellentesque urna et, faucibus risus. Vivamus ultrices sit amet mi vel posuere. Duis tincidunt sed nunc eget suscipit. Duis mollis aliquet erat eu euismod. Nullam tellus mauris, eleifend ac blandit id, blandit et lacus. Duis a nulla dapibus, aliquam libero nec, imperdiet leo. Duis orci felis, vestibulum at accumsan eu, bibendum quis elit. Donec vitae leo eget lacus imperdiet convallis. Nullam porta leo odio, sit amet mattis sem imperdiet et. Integer ornare orci ut sem lacinia, a placerat ligula finibus. Fusce vel est lobortis, ornare ipsum nec, imperdiet enim.
+        </p>
+        <p>
+          Praesent sed velit pulvinar, varius sapien sit amet, laoreet tellus. Proin euismod maximus diam, quis accumsan sem sagittis ut. Mauris non mi eu eros efficitur dignissim at ut massa. Nulla lorem elit, consectetur sed euismod a, fermentum at libero. Proin viverra nisi eget ante condimentum, at commodo turpis malesuada. Curabitur dolor nulla, mattis in augue at, semper fringilla nisl. Duis nunc arcu, molestie non felis id, ultricies porttitor lacus. Maecenas ornare in tellus vel scelerisque. Curabitur ullamcorper nunc id dictum iaculis. Nulla at molestie dui. Suspendisse eget ipsum in purus blandit maximus. Curabitur molestie venenatis augue vel elementum. Donec laoreet mauris nunc, eget suscipit nibh egestas id.
+        </p>
+        <p>
+          Nulla ut tellus fermentum mauris pulvinar venenatis. Morbi vitae ex odio. Vestibulum quis felis ullamcorper, lacinia nisi eget, vehicula magna. Vivamus rutrum felis non massa molestie, a rhoncus ex placerat. Suspendisse fringilla massa quam, non sollicitudin odio congue et. Nam pretium tincidunt blandit. Morbi accumsan dictum dolor, in sodales risus accumsan ut. Praesent suscipit ipsum odio, id venenatis tellus fringilla vitae. Maecenas ornare efficitur quam ut condimentum. Donec ac commodo risus. In dolor dolor, consequat interdum velit sollicitudin, bibendum mattis neque.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

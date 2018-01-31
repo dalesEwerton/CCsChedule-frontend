@@ -9,9 +9,16 @@ export class UserService {
   private api: string;
 
   constructor() {
+
     this.loggedIn = false;
     this.user = null;
     this.api = 'https://ccschedule-backend.herokuapp.com/user/';
+
+    this.keepAwake();
+    setInterval(() => {
+      this.keepAwake();
+      console.log('Keep Awake');
+    }, 300000);
   }
 
   addUser(username: string, name: string, password: string, scheduleId: number, job: string, aboutMe: string) {
@@ -106,6 +113,16 @@ export class UserService {
   getUserSchedule() {
     return this.user.scheduleID;
   }
+
+  keepAwake() {
+
+    $.ajax({
+      type: 'GET',
+      url: 'https://ccschedule-backend.herokuapp.com/schedule/',
+      async: false,
+    });
+  }
+
 }
 
 class User {

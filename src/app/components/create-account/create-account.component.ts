@@ -14,6 +14,7 @@ export class CreateAccountComponent implements OnInit {
 
   ngOnInit() {
   }
+
   createUser(e) {
     e.preventDefault();
     e.preventDefault();

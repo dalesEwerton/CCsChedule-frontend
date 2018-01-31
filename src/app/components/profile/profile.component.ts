@@ -20,6 +20,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById('nav1').innerText = 'Profile';
+    document.getElementById('nav2').innerText = 'Teams';
+    document.getElementById('nav3').innerText = 'Settings';
   }
 
   logout() {
